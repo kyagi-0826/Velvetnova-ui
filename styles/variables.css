@@ -1,0 +1,148 @@
+:root {
+  /* Primary Colors */
+  --vn-primary-color: #18a058;
+  --vn-primary-color-hover: #36ad6a;
+  --vn-primary-color-pressed: #0c7a43;
+  --vn-primary-color-suppl: #36ad6a;
+  
+  /* Info Colors */
+  --vn-info-color: #2080f0;
+  --vn-info-color-hover: #4098fc;
+  --vn-info-color-pressed: #1060c9;
+  --vn-info-color-suppl: #4098fc;
+  
+  /* Success Colors */
+  --vn-success-color: #18a058;
+  --vn-success-color-hover: #36ad6a;
+  --vn-success-color-pressed: #0c7a43;
+  --vn-success-color-suppl: #36ad6a;
+  
+  /* Warning Colors */
+  --vn-warning-color: #f0a020;
+  --vn-warning-color-hover: #fcb040;
+  --vn-warning-color-pressed: #c97c10;
+  --vn-warning-color-suppl: #fcb040;
+  
+  /* Error Colors */
+  --vn-error-color: #d03050;
+  --vn-error-color-hover: #de576d;
+  --vn-error-color-pressed: #ab1f3f;
+  --vn-error-color-suppl: #de576d;
+  
+  /* Text Colors */
+  --vn-text-color-base: #000000d9;
+  --vn-text-color-1: #262626;
+  --vn-text-color-2: #525252;
+  --vn-text-color-3: #8c8c8c;
+  --vn-text-color-disabled: #00000040;
+  
+  /* Background Colors */
+  --vn-body-color: #ffffff;
+  --vn-card-color: #ffffff;
+  --vn-modal-color: #ffffff;
+  --vn-popover-color: #ffffff;
+  
+  /* Border Colors */
+  --vn-border-color: #efeff5;
+  --vn-divider-color: #efeff5;
+  
+  /* Component Colors */
+  --vn-input-color: #00000000;
+  --vn-input-color-disabled: #fafafc;
+  --vn-action-color: #f5f5f5;
+  --vn-action-color-hover: #f0f0f0;
+  --vn-action-color-pressed: #e8e8e8;
+  
+  /* Font Sizes */
+  --vn-font-size-tiny: 12px;
+  --vn-font-size-small: 14px;
+  --vn-font-size-medium: 16px;
+  --vn-font-size-large: 18px;
+  
+  /* Font Weights */
+  --vn-font-weight-normal: 400;
+  --vn-font-weight-strong: 500;
+  
+  /* Line Heights */
+  --vn-line-height: 1.6;
+  
+  /* Border Radius */
+  --vn-border-radius-small: 3px;
+  --vn-border-radius: 6px;
+  --vn-border-radius-large: 10px;
+  
+  /* Shadows */
+  --vn-box-shadow-1: 0 1px 2px -2px rgba(0, 0, 0, .08), 0 3px 6px 0 rgba(0, 0, 0, .06), 0 5px 12px 4px rgba(0, 0, 0, .04);
+  --vn-box-shadow-2: 0 3px 6px -4px rgba(0, 0, 0, .12), 0 6px 16px 0 rgba(0, 0, 0, .08), 0 9px 28px 8px rgba(0, 0, 0, .05);
+  --vn-box-shadow-3: 0 6px 16px -9px rgba(0, 0, 0, .08), 0 9px 28px 0 rgba(0, 0, 0, .05), 0 12px 48px 16px rgba(0, 0, 0, .03);
+  
+  /* Heights */
+  --vn-height-tiny: 22px;
+  --vn-height-small: 28px;
+  --vn-height-medium: 34px;
+  --vn-height-large: 40px;
+  
+  /* Opacity */
+  --vn-opacity-1: 0.82;
+  --vn-opacity-2: 0.72;
+  --vn-opacity-3: 0.38;
+  --vn-opacity-4: 0.24;
+  --vn-opacity-5: 0.18;
+  --vn-opacity-disabled: 0.38;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  /* Text Colors */
+  --vn-text-color-base: #ffffff;
+  --vn-text-color-1: #ffffff;
+  --vn-text-color-2: #ffffffd1;
+  --vn-text-color-3: #ffffff82;
+  --vn-text-color-disabled: #ffffff38;
+  
+  /* Background Colors */
+  --vn-body-color: #101014;
+  --vn-card-color: #18181c;
+  --vn-modal-color: #18181c;
+  --vn-popover-color: #18181c;
+  
+  /* Border Colors */
+  --vn-border-color: #262628;
+  --vn-divider-color: #262628;
+  
+  /* Component Colors */
+  --vn-input-color: #00000000;
+  --vn-input-color-disabled: #2e2e30;
+  --vn-action-color: #2e2e30;
+  --vn-action-color-hover: #34343a;
+  --vn-action-color-pressed: #3e3e44;
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+}
+
+.vn-component {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: var(--vn-font-size-medium);
+  line-height: var(--vn-line-height);
+  color: var(--vn-text-color-base);
+}
+
+/* Focus styles */
+.vn-focus {
+  outline: 2px solid var(--vn-primary-color);
+  outline-offset: 2px;
+}
+
+/* Disabled styles */
+.vn-disabled {
+  opacity: var(--vn-opacity-disabled);
+  cursor: not-allowed;
+}
+
+/* Transition */
+.vn-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
