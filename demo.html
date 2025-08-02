@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velvetnova UI Demo</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: var(--vn-body-color, #ffffff);
+      color: var(--vn-text-color-base, #000000d9);
+    }
+    
+    .demo {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .demo-section {
+      margin-bottom: 32px;
+      padding: 24px;
+      border: 1px solid var(--vn-border-color, #efeff5);
+      border-radius: var(--vn-border-radius, 6px);
+      background: var(--vn-card-color, #ffffff);
+    }
+    
+    .demo-title {
+      margin: 0 0 16px 0;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--vn-primary-color, #18a058);
+    }
+    
+    .demo-item {
+      margin-bottom: 16px;
+    }
+    
+    .demo-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .demo-label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: var(--vn-text-color-2, #525252);
+    }
+    
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 8px 16px;
+      border: 1px solid var(--vn-border-color, #efeff5);
+      border-radius: var(--vn-border-radius, 6px);
+      background: var(--vn-action-color, #f5f5f5);
+      cursor: pointer;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <button class="theme-toggle" @click="toggleTheme">
+      {{ isDark ? '☀️ 浅色' : '🌙 深色' }}
+    </button>
+    
+    <div class="demo">
+      <h1>Velvetnova UI Demo</h1>
+      
+      <!-- Text Components -->
+      <div class="demo-section">
+        <h2 class="demo-title">文本组件 (NText)</h2>
+        <div class="demo-item">
+          <label class="demo-label">不同类型:</label>
+          <n-text type="default">默认文本</n-text> |
+          <n-text type="primary">主要文本</n-text> |
+          <n-text type="info">信息文本</n-text> |
+          <n-text type="success">成功文本</n-text> |
+          <n-text type="warning">警告文本</n-text> |
+          <n-text type="error">错误文本</n-text>
+        </div>
+        <div class="demo-item">
+          <label class="demo-label">不同大小:</label>
+          <n-text size="tiny">微小</n-text> |
+          <n-text size="small">小</n-text> |
+          <n-text size="medium">中</n-text> |
+          <n-text size="large">大</n-text>
+        </div>
+        <div class="demo-item">
+          <label class="demo-label">文本样式:</label>
+          <n-text strong>粗体</n-text> |
+          <n-text italic>斜体</n-text> |
+          <n-text underline>下划线</n-text> |
+          <n-text delete>删除线</n-text> |
+          <n-text code>代码样式</n-text>
+        </div>
+      </div>
+      
+      <!-- Input Components -->
+      <div class="demo-section">
+        <h2 class="demo-title">输入组件 (NInput)</h2>
+        <div class="demo-item">
+          <label class="demo-label">基础输入框:</label>
+          <n-input v-model="inputValue" placeholder="请输入内容" clearable></n-input>
+        </div>
+        <div class="demo-item">
+          <label class="demo-label">带前后缀:</label>
+          <n-input v-model="inputValue2" placeholder="用户名" prefix="用户"></n-input>
+        </div>
+        <div class="demo-item">
+          <label class="demo-label">不同状态:</label>
+          <n-input placeholder="成功状态" status="success"></n-input>
+          <n-input placeholder="警告状态" status="warning"></n-input>
+          <n-input placeholder="错误状态" status="error"></n-input>
+        </div>
+      </div>
+      
+      <!-- Textarea Components -->
+      <div class="demo-section">
+        <h2 class="demo-title">文本域组件 (NTextarea)</h2>
+        <div class="demo-item">
+          <label class="demo-label">自动调整大小:</label>
+          <n-textarea 
+            v-model="textareaValue" 
+            placeholder="请输入内容，支持自动调整高度" 
+            :autosize="{ minRows: 3, maxRows: 6 }"
+            show-count
+            :maxlength="200">
+          </n-textarea>
+        </div>
+      </div>
+      
+      <!-- Checkbox Components -->
+      <div class="demo-section">
+        <h2 class="demo-title">复选框组件 (NCheckbox)</h2>
+        <div class="demo-item">
+          <label class="demo-label">基础复选框:</label>
+          <n-checkbox v-model:checked="checked1" label="选项1"></n-checkbox>
+          <n-checkbox v-model:checked="checked2" label="选项2"></n-checkbox>
+        </div>
+        <div class="demo-item">
+          <label class="demo-label">中间状态:</label>
+          <n-checkbox :indeterminate="true" label="中间状态"></n-checkbox>
+        </div>
+      </div>
+      
+      <!-- Radio Components -->
+      <div class="demo-section">
+        <h2 class="demo-title">单选框组件 (NRadio)</h2>
+        <div class="demo-item">
+          <label class="demo-label">单选组 (水平):</label>
+          <n-radio-group v-model="radioValue" direction="horizontal">
+            <n-radio value="option1" label="选项1"></n-radio>
+            <n-radio value="option2" label="选项2"></n-radio>
+            <n-radio value="option3" label="选项3"></n-radio>
+          </n-radio-group>
+        </div>
+        <div class="demo-item">
+          <label class="demo-label">单选组 (垂直):</label>
+          <n-radio-group v-model="radioValue2" direction="vertical">
+            <n-radio value="a" label="选项A"></n-radio>
+            <n-radio value="b" label="选项B"></n-radio>
+            <n-radio value="c" label="选项C"></n-radio>
+          </n-radio-group>
+        </div>
+      </div>
+      
+      <!-- Date & Time Pickers -->
+      <div class="demo-section">
+        <h2 class="demo-title">日期时间组件</h2>
+        <div class="demo-item">
+          <label class="demo-label">日期选择器:</label>
+          <n-date-picker v-model="selectedDate" clearable></n-date-picker>
+        </div>
+        <div class="demo-item">
+          <label class="demo-label">日期时间选择器:</label>
+          <n-date-picker v-model="selectedDateTime" show-time clearable></n-date-picker>
+        </div>
+        <div class="demo-item">
+          <label class="demo-label">时间选择器:</label>
+          <n-time-picker v-model="selectedTime" show-seconds clearable></n-time-picker>
+        </div>
+      </div>
+      
+      <!-- Current Values Display -->
+      <div class="demo-section">
+        <h2 class="demo-title">当前值</h2>
+        <div class="demo-item">
+          <pre>{{ JSON.stringify({
+            inputValue,
+            inputValue2,
+            textareaValue,
+            checked1,
+            checked2,
+            radioValue,
+            radioValue2,
+            selectedDate,
+            selectedDateTime,
+            selectedTime
+          }, null, 2) }}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="./dist/index.js"></script>
+  <script>
+    const { createApp, ref } = Vue;
+    
+    createApp({
+      setup() {
+        const isDark = ref(false);
+        const inputValue = ref('');
+        const inputValue2 = ref('');
+        const textareaValue = ref('');
+        const checked1 = ref(false);
+        const checked2 = ref(true);
+        const radioValue = ref('option1');
+        const radioValue2 = ref('a');
+        const selectedDate = ref(null);
+        const selectedDateTime = ref(null);
+        const selectedTime = ref(null);
+        
+        const toggleTheme = () => {
+          isDark.value = !isDark.value;
+          document.documentElement.setAttribute('data-theme', isDark.value ? 'dark' : 'light');
+        };
+        
+        return {
+          isDark,
+          inputValue,
+          inputValue2,
+          textareaValue,
+          checked1,
+          checked2,
+          radioValue,
+          radioValue2,
+          selectedDate,
+          selectedDateTime,
+          selectedTime,
+          toggleTheme
+        };
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html>

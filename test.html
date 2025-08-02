@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velvetnova UI Test</title>
+  <link rel="stylesheet" href="./dist/style.css">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: var(--vn-body-color, #ffffff);
+    }
+    
+    .demo {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .demo-section {
+      margin-bottom: 32px;
+      padding: 24px;
+      border: 1px solid var(--vn-border-color, #efeff5);
+      border-radius: var(--vn-border-radius, 6px);
+      background: var(--vn-card-color, #ffffff);
+    }
+    
+    .demo-item {
+      margin-bottom: 16px;
+    }
+    
+    .demo-label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: var(--vn-text-color-2, #525252);
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="demo">
+      <h1>Velvetnova UI Test</h1>
+      
+      <div class="demo-section">
+        <h2>Text Component</h2>
+        <div class="demo-item">
+          <span class="vn-text vn-text--primary vn-text--large">Primary Text</span>
+        </div>
+      </div>
+      
+      <div class="demo-section">
+        <h2>Input Component</h2>
+        <div class="demo-item">
+          <div class="vn-input-wrapper vn-input-wrapper--medium">
+            <input class="vn-input" placeholder="Test input" />
+          </div>
+        </div>
+      </div>
+      
+      <div class="demo-section">
+        <h2>Button Test</h2>
+        <button onclick="testComponents()">Test Component Loading</button>
+        <div id="result"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function testComponents() {
+      const result = document.getElementById('result');
+      
+      // Check if CSS variables are loaded
+      const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--vn-primary-color');
+      
+      result.innerHTML = `
+        <p>Primary Color: ${primaryColor || 'Not loaded'}</p>
+        <p>CSS styles are ${primaryColor ? 'working' : 'not working'}</p>
+      `;
+    }
+    
+    // Test CSS loading on page load
+    document.addEventListener('DOMContentLoaded', testComponents);
+  </script>
+</body>
+</html>
